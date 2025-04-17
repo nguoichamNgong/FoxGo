@@ -399,6 +399,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &748428872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748428873}
+  m_Layer: 7
+  m_Name: GroundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748428873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748428872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 941215682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853250488
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 853250490}
   - component: {fileID: 853250489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: simple_setup_level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +613,8 @@ GameObject:
   - component: {fileID: 941215683}
   - component: {fileID: 941215684}
   - component: {fileID: 941215685}
-  m_Layer: 0
+  - component: {fileID: 941215686}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +661,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 436853641
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 398134693, guid: d0ff653f4b4d3f14dab1926a9ed3efb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -650,10 +682,11 @@ Transform:
   m_GameObject: {fileID: 941215680}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.59, y: -2.52, z: 0}
+  m_LocalPosition: {x: -2.59, y: -2.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 748428873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &941215683
@@ -730,9 +763,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4f9664ea06b7346a30187d457aab13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 7.5
+  m_MoveSpeed: 8
   m_RB: {fileID: 941215683}
-  m_JumpForce: 15
+  m_JumpForce: 12
+  m_groundCheckPoint: {fileID: 748428873}
+  m_whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!95 &941215686
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941215680}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 12450c5d75f7d1b4dbee1c31ed8795e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!850595691 &1078847673
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -980,7 +1038,7 @@ GameObject:
   - component: {fileID: 1861275305}
   - component: {fileID: 1861275304}
   - component: {fileID: 1861275303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,7 +1376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921879831}
   - component: {fileID: 1921879832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ceiling Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

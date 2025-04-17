@@ -14,10 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_whatIsGround;
 
     private bool m_canDoubleJump;
+
+    private Animator m_anim;
+
+    private SpriteRenderer m_spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
-
+        m_anim = GetComponent<Animator>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -47,5 +52,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if(m_RB.velocity.x < 0)
+        {
+            m_spriteRenderer.flipX = true;
+        }
+        else if(m_RB.velocity.x > 0) 
+        {
+            m_spriteRenderer.flipX = false;
+        }
+
+        m_anim.SetFloat("moveSpeed", Mathf.Abs(m_RB.velocity.x));
+        m_anim.SetBool("isGrounded", m_isGrounded);
     }
 }
